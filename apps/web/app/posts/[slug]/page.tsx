@@ -27,36 +27,35 @@ export default async function PostPage({ params }: PageProps<"/posts/[slug]">) {
   }).format(new Date(post.published_at))
 
   return (
-    <main className="min-h-screen bg-[#f7f6f2] text-[#202620]">
+    <main className="min-h-screen bg-white text-black">
       <div className="mx-auto max-w-4xl px-6 pb-24 pt-8 sm:px-10 lg:px-12">
-        <header className="border-b border-[#d8ddd5] pb-5">
-          <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Back to Fieldnotes home">
-            <span className="grid size-9 place-items-center rounded-full bg-[#234b3c] text-sm font-semibold text-white">F</span>
-            <span className="text-sm font-semibold tracking-[0.12em] uppercase">Fieldnotes</span>
+        <header className="border-b border-black pb-4">
+          <Link href="/" className="text-sm font-medium tracking-[0.14em] uppercase" aria-label="Back to Fieldnotes home">
+            Feed · Notes
           </Link>
         </header>
 
         <article className="mx-auto max-w-3xl pt-14 sm:pt-20">
-          <Link href="/" className="text-xs font-semibold tracking-[0.14em] text-[#527462] uppercase hover:underline">
+          <Link href="/" className="text-xs font-medium tracking-[0.12em] text-neutral-600 uppercase hover:text-black hover:underline">
             ← All writing
           </Link>
-          <div className="mt-10 flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] text-[#768078] uppercase">
+          <div className="mt-8 flex items-center gap-4 text-xs font-medium tracking-[0.1em] text-neutral-600 uppercase">
             <span>{post.category}</span>
-            <span aria-hidden="true" className="size-1 rounded-full bg-[#91a196]" />
+            <span aria-hidden="true">·</span>
             <time dateTime={post.published_at}>{publishedDate}</time>
           </div>
-          <h1 className="mt-5 text-4xl leading-[1.05] font-medium tracking-[-0.05em] text-[#26362c] sm:text-6xl">
+          <h1 className="mt-6 text-4xl leading-[1.08] font-medium tracking-[-0.05em] text-black sm:text-6xl">
             {post.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#667269]">{post.summary}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">{post.summary}</p>
           <div className="mt-6 flex flex-wrap gap-2" aria-label="Article tags">
             {post.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="h-6 rounded-full border-[#dce2db] bg-white px-2.5 text-[11px] font-normal text-[#52655a]">
+              <Badge key={tag} variant="outline" className="h-auto rounded-none border-neutral-300 bg-white px-2 py-1 text-[10px] font-normal tracking-[0.08em] text-neutral-600 uppercase">
                 {tag}
               </Badge>
             ))}
           </div>
-          <div className="my-10 h-px bg-[#d8ddd5]" />
+          <div className="my-10 h-px bg-neutral-300" />
           <MarkdownContent content={post.body_markdown} />
         </article>
       </div>

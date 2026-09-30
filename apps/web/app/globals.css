@@ -131,13 +131,13 @@
 
 @layer components {
   .article-prose {
-    color: #3f4c42;
+    color: #262626;
     font-size: 1.05rem;
     line-height: 1.85;
   }
 
   .article-prose :where(h1, h2, h3, h4) {
-    color: #26362c;
+    color: #111111;
     font-weight: 550;
     letter-spacing: -0.035em;
     line-height: 1.2;
@@ -163,31 +163,31 @@
   .article-prose li + li { margin-top: 0.35rem; }
 
   .article-prose a {
-    color: #315d49;
+    color: #111111;
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
   .article-prose blockquote {
-    border-left: 2px solid #8ba392;
-    color: #607066;
+    border-left: 2px solid #a3a3a3;
+    color: #525252;
     padding-left: 1.25rem;
     font-family: var(--font-sans), sans-serif;
     font-style: italic;
   }
 
   .article-prose :not(pre) > code {
-    border-radius: 0.3rem;
-    background: #e9ece7;
+    border-radius: 0;
+    background: #f5f5f5;
     padding: 0.15em 0.35em;
     font-size: 0.88em;
   }
 
   .article-prose pre {
     overflow-x: auto;
-    border: 1px solid #e0e3dd;
-    border-radius: 0.75rem;
-    background: #f0f1ed;
+    border: 1px solid #d4d4d4;
+    border-radius: 0;
+    background: #f5f5f5;
     padding: 1rem 1.2rem;
     font-size: 0.88rem;
     line-height: 1.7;
@@ -195,7 +195,7 @@
 
   .article-prose table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
   .article-prose th,
-  .article-prose td { border: 1px solid #d8ddd5; padding: 0.55rem 0.75rem; text-align: left; }
-  .article-prose th { background: #eef0eb; color: #34443a; font-weight: 600; }
-  .article-prose hr { border-color: #d8ddd5; margin: 2rem 0; }
+  .article-prose td { border: 1px solid #d4d4d4; padding: 0.55rem 0.75rem; text-align: left; }
+  .article-prose th { background: #f5f5f5; color: #171717; font-weight: 600; }
+  .article-prose hr { border-color: #d4d4d4; margin: 2rem 0; }
 }

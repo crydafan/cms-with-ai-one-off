@@ -359,7 +359,7 @@ export function DraftEditor() {
   return (
     <WriterFrame>
       {publishedSlug ? (
-        <Alert className="mb-8 border-[#c8d7ca] bg-[#f2f7f1] text-[#294c37]">
+        <Alert className="mb-8 border-neutral-300 bg-white text-black">
           <Check className="size-4" />
           <AlertTitle>Your story is live</AlertTitle>
           <AlertDescription>
@@ -371,12 +371,8 @@ export function DraftEditor() {
         </Alert>
       ) : null}
 
-      <div className="mb-9 flex flex-col gap-4 border-b border-[#dce1da] pb-7 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.18em] text-[#527462] uppercase">The writer&apos;s desk</p>
-          <h1 className="text-4xl leading-[1.04] font-medium tracking-[-0.05em] text-[#26362c] sm:text-5xl">Make room for a thought.</h1>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-[#6b766e]">Write without worrying about the finishing details. Your draft saves as you go.</p>
-        </div>
+      <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-sm font-medium tracking-[0.14em] uppercase">Write</h1>
         <DraftSaveIndicator status={draftStatus} error={draftError} onRetry={retryDraftSave} />
       </div>
 
@@ -388,44 +384,43 @@ export function DraftEditor() {
         className="space-y-7"
       >
         <div className="space-y-2.5">
-          <label htmlFor="draft-title" className="text-sm font-medium text-[#39483e]">Title</label>
+          <label htmlFor="draft-title" className="text-xs font-medium tracking-[0.1em] uppercase">Title</label>
           <Input
             id="draft-title"
             name="title"
             value={draft.title}
             onChange={(event) => updateAuthoredField("title", event.target.value)}
-            placeholder="Give this piece a working title"
+            placeholder="A title for your post"
             maxLength={500}
             disabled={isGenerating || isPublishing}
-            className="h-14 border-[#d7ded6] bg-white px-4 text-lg shadow-none placeholder:text-[#a2aaa3] focus-visible:border-[#77917f] focus-visible:ring-[#77917f]/20"
+            className="h-14 rounded-none border-black bg-white px-4 text-lg shadow-none placeholder:text-neutral-400 focus-visible:border-black focus-visible:ring-black/20"
           />
         </div>
 
         <div className="space-y-2.5">
           <div className="flex items-center justify-between gap-3">
-            <label htmlFor="draft-body" className="text-sm font-medium text-[#39483e]">Your writing</label>
-            <span className="text-xs text-[#879189]">Markdown supported</span>
+            <label htmlFor="draft-body" className="text-xs font-medium tracking-[0.1em] uppercase">Content</label>
+            <span className="text-xs text-neutral-500">Markdown supported</span>
           </div>
           <Textarea
             id="draft-body"
             name="body_markdown"
             value={draft.body_markdown}
             onChange={(event) => updateAuthoredField("body_markdown", event.target.value)}
-            placeholder="Start with the idea on your mind…"
+            placeholder="Start writing…"
             disabled={isGenerating || isPublishing}
-            className="min-h-[24rem] resize-y border-[#d7ded6] bg-white px-4 py-4 text-[15px] leading-7 shadow-none placeholder:text-[#a2aaa3] focus-visible:border-[#77917f] focus-visible:ring-[#77917f]/20 sm:min-h-[30rem]"
+            className="min-h-[24rem] resize-y rounded-none border-black bg-white px-4 py-4 text-[15px] leading-7 shadow-none placeholder:text-neutral-400 focus-visible:border-black focus-visible:ring-black/20 sm:min-h-[30rem]"
           />
         </div>
 
-        <div className="flex flex-col items-start gap-3 border-t border-[#dce1da] pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-start gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-medium text-[#39483e]">Ready to shape the details?</p>
-            <p className="mt-1 text-xs text-[#79847c]">We&apos;ll prepare a preview for you to review before anything goes live.</p>
+            <p className="text-xs text-neutral-500">AI will prepare a preview for you to review before it goes live.</p>
           </div>
           <Button
             type="submit"
             disabled={!canGenerate}
-            className="h-11 rounded-full bg-[#234b3c] px-6 font-medium text-white hover:bg-[#193b2e] disabled:bg-[#aeb9b0]"
+            className="h-11 rounded-none border border-black bg-white px-6 font-medium text-black shadow-none hover:bg-black hover:text-white disabled:border-neutral-300 disabled:bg-neutral-100 disabled:text-neutral-400"
           >
             {isGenerating ? <><LoaderCircle className="mr-2 size-4 animate-spin" /> Preparing preview…</> : metadata ? "Regenerate preview" : generationError ? "Try again" : "Prepare preview"}
           </Button>
@@ -465,13 +460,13 @@ export function DraftEditor() {
 
 function WriterFrame({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-[#f7f6f2] text-[#202620]">
-      <div className="mx-auto max-w-4xl px-6 pb-20 pt-7 sm:px-10 lg:px-12">
-        <header className="mb-12 flex items-center justify-between border-b border-[#d8ddd5] pb-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-[#52655a] uppercase hover:text-[#234b3c]">
-            <span aria-hidden="true">←</span> Back to Fieldnotes
+    <main className="min-h-screen bg-white text-black">
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-8 sm:px-10 lg:px-12">
+        <header className="mb-10 flex items-center justify-between border-b border-black pb-4">
+          <Link href="/" className="text-sm font-medium tracking-[0.14em] uppercase hover:underline hover:underline-offset-4">
+            Studio · Write
           </Link>
-          <span className="text-[10px] font-medium tracking-[0.14em] text-[#8a938c] uppercase">Private writing space</span>
+          <span className="text-xs font-medium tracking-[0.12em] text-neutral-600 uppercase">Draft</span>
         </header>
         {children}
       </div>
@@ -482,16 +477,16 @@ function WriterFrame({ children }: { children: React.ReactNode }) {
 function DraftSaveIndicator({ status, error, onRetry }: { status: DraftSaveStatus; error: string | null; onRetry: () => void }) {
   return (
     <div className="flex min-h-8 items-center gap-2 text-xs" aria-live="polite">
-      {status === "saved" ? <Check className="size-3.5 text-[#567c62]" /> : null}
-      {status === "saving" ? <LoaderCircle className="size-3.5 animate-spin text-[#718277]" /> : null}
-      {status === "error" ? <CircleAlert className="size-3.5 text-[#a64e38]" /> : null}
-      <span className={status === "error" ? "text-[#9c452e]" : "text-[#758078]"}>
+      {status === "saved" ? <Check className="size-3.5 text-neutral-600" /> : null}
+      {status === "saving" ? <LoaderCircle className="size-3.5 animate-spin text-neutral-600" /> : null}
+      {status === "error" ? <CircleAlert className="size-3.5 text-red-700" /> : null}
+      <span className={status === "error" ? "text-red-700" : "text-neutral-500"}>
         {status === "saved" ? "Draft saved" : null}
         {status === "unsaved" ? "Unsaved changes" : null}
         {status === "saving" ? "Saving draft…" : null}
         {status === "error" ? error ?? "Couldn't save draft." : null}
       </span>
-      {status === "error" ? <button type="button" onClick={onRetry} className="font-medium text-[#315d49] underline underline-offset-2">Retry</button> : null}
+      {status === "error" ? <button type="button" onClick={onRetry} className="font-medium text-black underline underline-offset-2">Retry</button> : null}
     </div>
   )
 }
@@ -499,31 +494,28 @@ function DraftSaveIndicator({ status, error, onRetry }: { status: DraftSaveStatu
 function WriterLoadingState() {
   return (
     <WriterFrame>
-      <div className="mb-9 space-y-4 border-b border-[#dce1da] pb-7">
-        <Skeleton className="h-3 w-28 bg-[#e5e9e2]" />
-        <Skeleton className="h-12 w-3/4 bg-[#e5e9e2]" />
-        <Skeleton className="h-4 w-2/3 bg-[#e5e9e2]" />
+      <div className="mb-9 space-y-4">
+        <Skeleton className="h-4 w-20 rounded-none bg-neutral-200" />
+        <Skeleton className="h-14 w-full rounded-none bg-neutral-200" />
       </div>
-      <Skeleton className="mb-3 h-4 w-14 bg-[#e5e9e2]" />
-      <Skeleton className="h-14 w-full bg-[#e5e9e2]" />
-      <Skeleton className="mt-8 h-4 w-24 bg-[#e5e9e2]" />
-      <Skeleton className="mt-3 h-[28rem] w-full bg-[#e5e9e2]" />
+      <Skeleton className="mb-3 h-4 w-20 rounded-none bg-neutral-200" />
+      <Skeleton className="h-[28rem] w-full rounded-none bg-neutral-200" />
     </WriterFrame>
   )
 }
 
 function MetadataLoadingState() {
   return (
-    <section className="mt-8 rounded-2xl border border-[#dfe4dc] bg-[#fbfcf9] p-5 sm:p-7" aria-live="polite" aria-label="Preparing metadata preview">
+    <section className="mt-8 border-t border-neutral-300 pt-7" aria-live="polite" aria-label="Preparing metadata preview">
       <div className="mb-7 space-y-3">
-        <Skeleton className="h-3 w-36 bg-[#e4e9e2]" />
-        <Skeleton className="h-6 w-56 bg-[#e4e9e2]" />
+        <Skeleton className="h-3 w-28 rounded-none bg-neutral-200" />
+        <Skeleton className="h-6 w-56 rounded-none bg-neutral-200" />
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Skeleton className="h-[4.25rem] w-full bg-[#e4e9e2]" />
-        <Skeleton className="h-[4.25rem] w-full bg-[#e4e9e2]" />
-        <Skeleton className="h-24 w-full bg-[#e4e9e2] sm:col-span-2" />
-        <Skeleton className="h-24 w-full bg-[#e4e9e2] sm:col-span-2" />
+        <Skeleton className="h-[4.25rem] w-full rounded-none bg-neutral-200" />
+        <Skeleton className="h-[4.25rem] w-full rounded-none bg-neutral-200" />
+        <Skeleton className="h-24 w-full rounded-none bg-neutral-200 sm:col-span-2" />
+        <Skeleton className="h-24 w-full rounded-none bg-neutral-200 sm:col-span-2" />
       </div>
     </section>
   )
