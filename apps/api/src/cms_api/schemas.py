@@ -17,6 +17,8 @@ NonBlankText = Annotated[str, StringConstraints(min_length=1), AfterValidator(_r
 
 
 class MetadataFields(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     slug: Slug
     category: NonBlankText
     tags: list[NonBlankText] = Field(max_length=MAX_TAGS)
