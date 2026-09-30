@@ -41,6 +41,8 @@ export type PostDetail = PostListItem & {
   body_markdown: string
 }
 
+export type PublishPostResponse = PostDetail
+
 export type ApiErrorDetail = {
   code: string
   message: string
