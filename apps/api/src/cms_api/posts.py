@@ -44,9 +44,9 @@ def publish_post(session: Session, request: PublishPostRequest) -> PostDetail:
         published_at=utc_now(),
     )
     session.add(post)
-    reset_draft(session)
 
     try:
+        reset_draft(session)
         session.commit()
     except IntegrityError as error:
         session.rollback()
