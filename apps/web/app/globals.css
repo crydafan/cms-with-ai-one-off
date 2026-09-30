@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-heading: ui-serif, Georgia, Cambria, "Times New Roman", serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -127,4 +127,75 @@
   html {
     @apply font-sans;
   }
+}
+
+@layer components {
+  .article-prose {
+    color: #3f4c42;
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
+
+  .article-prose :where(h1, h2, h3, h4) {
+    color: #26362c;
+    font-weight: 550;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+    margin: 2.3em 0 0.75em;
+  }
+
+  .article-prose h1 { font-size: 2.2rem; }
+  .article-prose h2 { font-size: 1.8rem; }
+  .article-prose h3 { font-size: 1.4rem; }
+
+  .article-prose p,
+  .article-prose ul,
+  .article-prose ol,
+  .article-prose blockquote,
+  .article-prose pre,
+  .article-prose table {
+    margin: 1.25em 0;
+  }
+
+  .article-prose ul { list-style: disc; padding-left: 1.5rem; }
+  .article-prose ol { list-style: decimal; padding-left: 1.5rem; }
+  .article-prose li { padding-left: 0.25rem; }
+  .article-prose li + li { margin-top: 0.35rem; }
+
+  .article-prose a {
+    color: #315d49;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .article-prose blockquote {
+    border-left: 2px solid #8ba392;
+    color: #607066;
+    padding-left: 1.25rem;
+    font-family: var(--font-sans), sans-serif;
+    font-style: italic;
+  }
+
+  .article-prose :not(pre) > code {
+    border-radius: 0.3rem;
+    background: #e9ece7;
+    padding: 0.15em 0.35em;
+    font-size: 0.88em;
+  }
+
+  .article-prose pre {
+    overflow-x: auto;
+    border: 1px solid #e0e3dd;
+    border-radius: 0.75rem;
+    background: #f0f1ed;
+    padding: 1rem 1.2rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .article-prose table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .article-prose th,
+  .article-prose td { border: 1px solid #d8ddd5; padding: 0.55rem 0.75rem; text-align: left; }
+  .article-prose th { background: #eef0eb; color: #34443a; font-weight: 600; }
+  .article-prose hr { border-color: #d8ddd5; margin: 2rem 0; }
 }
