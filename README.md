@@ -28,6 +28,7 @@ From `apps/api`:
 
 ```sh
 uv sync
+uv run alembic upgrade head
 ```
 
 ## Run the applications
